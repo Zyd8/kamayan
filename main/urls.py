@@ -34,8 +34,10 @@ urlpatterns = [
     path("signin", core_views.signin, name="signin"),
     path("signup", core_views.signup, name="signup"),
     path('signout', core_views.signout, name='signout'),
+    path('sell/', include('shopitem.urls')),
     path("admin/", admin.site.urls),
     path("__reload__/", include("django_browser_reload.urls")),
+
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

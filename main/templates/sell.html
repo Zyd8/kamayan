@@ -1,0 +1,78 @@
+{% load django_browser_reload %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <title>Sell</title>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <link rel='stylesheet' href="{% static 'signin.css' %}">
+        <script src="{% static 'signin.js' %}"></script>
+    </head>
+    <body>
+
+        <form method="post">
+            {% csrf_token %}
+            
+            <label>
+                <input type="radio" name="sell_type" value="second_hand" checked> Sell Second-hand Item
+            </label>
+            <label>
+                <input type="radio" name="sell_type" value="swap"> Swap Item
+            </label>
+        
+            <!-- Common fields for both selling and swapping -->
+            <label for="inputName">Name:</label>
+            <input type="text" id="inputName" name="name"><br>
+
+            <!-- Fields specific to selling second-hand items -->
+            <div id="second_hand_fields">
+                <label for="inputPrice">Price:</label>
+                <input type="text" id="inputPrice" name="price"><br>
+                <label for="inputDescription">Description:</label>
+                <textarea id="inputDescription" name="description"></textarea><br>
+                <label for="inputLocation">Location:</label>
+                <input type="text" id="inputLocation" name="location"><br>
+                <label for="inputPaymentMethod">Payment Method:</label>
+                <input type="text" id="inputPaymentMethod" name="payment_method"><br>
+                <label for="inputPickupMethod">Pickup Method:</label>
+                <input type="text" id="inputPickupMethod" name="pickup_method"><br>
+                <label for="inputCategory">Category:</label>
+                <input type="text" id="inputCategory" name="category"><br>
+                <label for="inputCondition">Condition:</label>
+                <input type="text" id="inputCondition" name="condition"><br>
+                <!-- Add other fields specific to second-hand items here -->
+                
+                <!-- Input field for images -->
+                <label for="inputImages">Images:</label>
+                <input type="file" id="inputImages" name="image" multiple><br>
+            </div>
+        
+            <!-- Fields specific to swapping products -->
+            <div id="swap_fields">
+                <label for="inputSwapFor">Swap For:</label>
+                <input type="text" id="inputSwapFor" name="swapfor"><br>
+                <label for="inputDescription">Description:</label>
+                <textarea id="inputDescription" name="description"></textarea><br>
+                <label for="inputLocation">Location:</label>
+                <input type="text" id="inputLocation" name="location"><br>
+                <label for="inputPickupMethod">Pickup Method:</label>
+                <input type="text" id="inputPickupMethod" name="pickup_method"><br>
+                <label for="inputCategory">Category:</label>
+                <input type="text" id="inputCategory" name="category"><br>
+                <label for="inputCondition">Condition:</label>
+                <input type="text" id="inputCondition" name="condition"><br>
+                <!-- Add other fields specific to swapping products here -->
+                
+                <!-- Input field for images -->
+                <label for="inputImages">Images:</label>
+                <input type="file" id="inputImages" name="image" multiple><br>
+            </div>
+        
+            <button type="submit">Submit</button>
+        </form>
+        
+    </body>
+</html>
