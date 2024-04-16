@@ -19,14 +19,25 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
 
 from main.core import views as core_views
+"""path("", core_views.index),
 
+if we have home now
+path('', core_views.home , name="home"),
+"""
 urlpatterns = [
     path("", core_views.index),
+    path('home', core_views.home , name="home"),
+    path("signin", core_views.signin, name="signin"),
+    path("signup", core_views.signup, name="signup"),
+    path('signout', core_views.signout, name='signout'),
     path("admin/", admin.site.urls),
     path("__reload__/", include("django_browser_reload.urls")),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

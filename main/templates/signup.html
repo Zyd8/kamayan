@@ -1,0 +1,38 @@
+{% load django_browser_reload %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <title>Sign up</title>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <link rel='stylesheet' href="{% static 'signup.css' %}">
+        <script src="{% static 'signup.js' %}"></script>
+    </head>
+    <body>
+
+        <form method="post"> <!-- POST means sending data to the server -->
+
+            {% csrf_token %} <!-- Protection against unauthorized submisstions -->
+
+            <label for="inputUsername">Username: </label>
+            <input type="text" id="inputUsername" name="inputUsername">
+
+            <label for="inputPassword">Password:</label>
+            <input type="password" id="inputPassword" name="inputPassword">
+
+            <label for="confirmInputPassword">Password:</label>
+            <input type="password" id="confirmInputPassword" name="confirmInputPassword">
+
+            <button type="submit" id="submit">Sign Up!</button>
+
+        </form>
+
+        {% if error_message %}
+            alert("{{error_message}}")
+        {% endif %}
+
+    </body>
+</html>
