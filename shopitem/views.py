@@ -7,7 +7,10 @@ def sell(request):
     if request.method == 'POST':
         user = request.user
         name = request.POST.get('name')
-        images = request.FILES.get('image')
+        images1 = request.FILES.get('images1')
+        images2 = request.FILES.get('images2')
+        images3 = request.FILES.get('images3')
+        images4 = request.FILES.get('images4')
         description = request.POST.get('description')
         location = request.POST.get('location')
         category = request.POST.get('category')
@@ -34,7 +37,10 @@ def sell(request):
             payment_method=payment_method,  
             category=category,
             condition=condition,
-            images=images,
+            images1=images1,
+            images2=images2,
+            images3=images3,
+            images4=images4,
             status="selling",
             contacts=contacts,
             swapfor=swapfor,
@@ -42,5 +48,8 @@ def sell(request):
         )
 
         return redirect('home')
+
+
+
      
     return render(request, 'sell.html')
