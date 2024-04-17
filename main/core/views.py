@@ -3,6 +3,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from shopitem.models import SecondHandItem
+from django.contrib.auth.models import Group
+
 
 def index(request):
     context = {
@@ -11,11 +13,22 @@ def index(request):
     return render(request, "index.html", context)
 
 def home(request):
-
+    # Get all second-hand items
     second_hand_items = SecondHandItem.objects.all()
 
+    # Check if the user is a premium member
+    is_premium_member = request.user.groups.filter(name='Premium Users').exists()
+
+    # Filter items based on premium membership
+    if is_premium_member:
+        premium_items = second_hand_items.filter(user__groups__name='Premium Users')
+    else:
+        premium_items = None
+
     context = {
-        'second_hand_items': second_hand_items
+        'second_hand_items': second_hand_items,
+        'premium_items': premium_items,
+        'is_premium_member': is_premium_member
     }
 
     return render(request, 'home.html', context)
@@ -63,3 +76,11 @@ def signout(request):
 def itemroom(request, item_id):
     item = get_object_or_404(SecondHandItem, pk=item_id)
     return render(request, 'itemroom.html', {'item': item})
+
+def become_premium(request):
+    if request.user.is_authenticated:
+        premium_group, created = Group.objects.get_or_create(name='Premium Users')
+        request.user.groups.add(premium_group)
+        return redirect('home')
+    else:
+        return redirect('signin')  

@@ -10,12 +10,50 @@
 </head>
 <body>
     <h1>Home Page</h1>
+    
+    <div> 
+        {% if request.user.is_authenticated %}
+            {% if is_premium_member %}
+                <p>Welcome premium member!</p>
+            {% else %}
+                <a href="{% url 'become_premium' %}">Become a premium member</a>
+            {% endif %}
+        {% endif %}
+    </div>
+    
+    
+    <div>
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'signout' %}">Sign out</a>
+        {% else %}
+        <a href="{% url 'signin' %}">Sign in </a>
+        {% endif %}
+    </div>
 
-    {% if request.user.is_authenticated %}
-    <a href="{% url 'signout' %}">Sign out</a>
-    {% else %}
-    <a href="{% url 'signin' %}">Sign in </a>
-    {% endif %}
+    <div>
+        <h2>Top Recommendations</h2>
+        {% if is_premium_member %}
+            {% if premium_items %}
+                {% for item in premium_items %}
+                    {% if not item.isforswap %}
+                        <div style="background-color: cyan;">
+                            <h3><a href="{% url 'itemroom' item.id %}">{{ item.name }}</a></h3>
+                            <p>Price: {{ item.price }}</p>
+                        </div>
+                    {% else %}
+                        <div style="background-color: cyan;">
+                            <h3><a href="{% url 'itemroom' item.id %}">{{ item.name }}</a></h3>
+                            <p>Swap</p>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+                <p>No premium member products available.</p>
+            {% endif %}
+        {% else %}
+            <p>You are not a premium member.</p>
+        {% endif %}
+    </div>    
 
     <div>
         <h2>Second-hand Selling Items</h2>
@@ -41,9 +79,6 @@
         {% endfor %}
     </div>
 
-    
-    
-    
 
 </body>
 </html>

@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 def item_image_path(instance, filename):
     return f'shop_item_images/{instance.user.id}/{filename}'
 
