@@ -67,13 +67,31 @@
     <button type="submit">Submit</button>
 </form>
 
-<hr>
 <h1> Currently selling: </h1>
 <hr>
+{% if currently_selling_items %}
+    <ul>
+    {% for item in currently_selling_items %}
+    <a href="{% url 'itemroom' item.id %}"><h1>{{ item.name }}</h1></a>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No items currently selling.</p>
+{% endif %}
 
 <hr>
 <h1> Sold Items: </h1>
 <hr>
+{% if sold_items %}
+    <ul>
+    {% for item in sold_items %}
+    <a href="{% url 'itemroom' item.id %}"><h1>{{ item.name }}</h1></a>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No items sold yet.</p>
+{% endif %}
+
 
 <script>
     // Show or hide swap fields based on the selected sell type

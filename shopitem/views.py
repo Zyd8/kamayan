@@ -1,9 +1,13 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import SecondHandItem
 from django.contrib.auth.decorators import login_required
 
 @login_required
 def sell(request):
+
+    currently_selling_items = SecondHandItem.objects.filter(user=request.user, status="selling")
+    sold_items = SecondHandItem.objects.filter(user=request.user, status="sold")
+
     if request.method == 'POST':
         user = request.user
         name = request.POST.get('name')
@@ -48,8 +52,21 @@ def sell(request):
         )
 
         return redirect('home')
-
-
-
      
-    return render(request, 'sell.html')
+    return render(request, 'sell.html', {
+    'currently_selling_items': currently_selling_items,
+    'sold_items': sold_items,
+})
+
+@login_required
+def update_status(request, item_id):
+    item = get_object_or_404(SecondHandItem, pk=item_id)
+    if request.user == item.user:  
+    
+        if item.status == 'selling':
+            item.status = 'sold'
+        else:
+            item.status = 'selling'
+        item.save()
+
+    return redirect('sell')

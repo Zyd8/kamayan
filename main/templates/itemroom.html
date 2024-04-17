@@ -27,5 +27,23 @@
     <img src="{{ item.images2.url }}" alt="{{ item.name }} Image">
     <img src="{{ item.images3.url }}" alt="{{ item.name }} Image">
     <img src="{{ item.images4.url }}" alt="{{ item.name }} Image">
+
+    {% if item.user == request.user %}
+        {% if item.status != "selling" %}
+            <form method="post" action="{% url 'update_status' item.id %}">
+                {% csrf_token %}
+                <input type="hidden" name="status" value="selling">
+                <button type="submit">Mark as Selling</button>
+            </form>
+        {% endif %}
+        
+        {% if item.status != "sold" %}
+            <form method="post" action="{% url 'update_status' item.id %}">
+                {% csrf_token %}
+                <input type="hidden" name="status" value="sold">
+                <button type="submit">Mark as Sold</button>
+            </form>
+        {% endif %}
+    {% endif %}
 </body>
 </html>
