@@ -29,8 +29,7 @@ if we have home now
 path('', core_views.home , name="home"),
 """
 urlpatterns = [
-    path("", core_views.index),
-    path('home', core_views.home , name="home"),
+    path('', core_views.home , name="home"),
     path("signin", core_views.signin, name="signin"),
     path("signup", core_views.signup, name="signup"),
     path('signout', core_views.signout, name='signout'),

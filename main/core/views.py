@@ -13,17 +13,12 @@ def index(request):
     return render(request, "index.html", context)
 
 def home(request):
-    # Get all second-hand items
     second_hand_items = SecondHandItem.objects.all()
 
-    # Check if the user is a premium member
     is_premium_member = request.user.groups.filter(name='Premium Users').exists()
 
-    # Filter items based on premium membership
-    if is_premium_member:
-        premium_items = second_hand_items.filter(user__groups__name='Premium Users')
-    else:
-        premium_items = None
+    premium_items = second_hand_items.filter(user__groups__name='Premium Users')
+  
 
     context = {
         'second_hand_items': second_hand_items,
