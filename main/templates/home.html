@@ -35,6 +35,19 @@
     </div>
 
     <div>
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'sell' %}">Sell</a>
+        {% endif %}
+    </div>
+
+    <div>
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'about' %}">About</a>
+        {% endif %}
+    </div>
+    
+    
+    <div>
         <h2>Top Recommendations</h2>
             {% if premium_items %}
                 {% for item in premium_items %}

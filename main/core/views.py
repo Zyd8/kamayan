@@ -83,6 +83,9 @@ def become_premium(request):
 def search(request):
     return render(request, 'search.html')
 
+def about(request):
+    return render(request, 'about.html')
+
 def search_results(request):
     query = request.GET.get('query')
     search_results = SecondHandItem.objects.filter(name__icontains=query)
