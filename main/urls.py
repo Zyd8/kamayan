@@ -34,6 +34,8 @@ urlpatterns = [
     path("signup", core_views.signup, name="signup"),
     path('signout', core_views.signout, name='signout'),
     path('premium', core_views.become_premium, name='become_premium'),
+    path('search', core_views.search, name='search'),
+    path('search_results', core_views.search_results, name='search_results'),
     path('item/<int:item_id>/', core_views.itemroom, name='itemroom'),
     path('sell/', include('shopitem.urls')),
     path("admin/", admin.site.urls),

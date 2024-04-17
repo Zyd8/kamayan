@@ -31,6 +31,10 @@
     </div>
 
     <div>
+        <a href="{% url 'search' %}">Search</a>
+    </div>
+
+    <div>
         <h2>Top Recommendations</h2>
             {% if premium_items %}
                 {% for item in premium_items %}

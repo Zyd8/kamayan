@@ -79,3 +79,12 @@ def become_premium(request):
         return redirect('home')
     else:
         return redirect('signin')  
+    
+def search(request):
+    return render(request, 'search.html')
+
+def search_results(request):
+    query = request.GET.get('query')
+    search_results = SecondHandItem.objects.filter(name__icontains=query)
+    context = {'search_results': search_results}
+    return render(request, 'search.html', context)
