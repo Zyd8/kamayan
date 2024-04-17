@@ -16,6 +16,7 @@ class SecondHandItem(models.Model):
     pickup_method = models.CharField(max_length=100)
     category = models.CharField(max_length=100)
     condition = models.CharField(max_length=100)
+    status = models.CharField(max_length=100)
     
     def __str__(self):
         return self.name
@@ -30,6 +31,7 @@ class SwapItem(models.Model):
     pickup_method = models.CharField(max_length=100)
     category = models.CharField(max_length=100)
     condition = models.CharField(max_length=100)
+    status = models.CharField(max_length=100)
     
     def __str__(self):
         return self.name
