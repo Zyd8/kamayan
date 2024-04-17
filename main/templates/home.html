@@ -9,16 +9,34 @@
     <title>Home</title>
 </head>
 <body>
-    <p>Home Page</p>
+    <h1>Home Page</h1>
 
     {% if request.user.is_authenticated %}
-
     <a href="{% url 'signout' %}">Sign out</a>
-
     {% else %}
-
     <a href="{% url 'signin' %}">Sign in </a>
-
     {% endif %}
+
+    <!-- Display SecondHandItems -->
+    <div>
+        <h2>Second Hand Items</h2>
+        {% for item in second_hand_items %}
+        <div style="background-color: cyan;">
+            <h3><a href="{% url 'secondhanditem_room' item.id %}">{{ item.name }}</a></h3>
+            <p>Price: {{ item.price }}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Display SwapItems -->
+    <div>
+        <h2>Swap Items</h2>
+        {% for item in swap_items %}
+        <div style="background-color: orange;">
+            <h3><a href="{% url 'secondhanditem_room' item.id %}">{{ item.name }}</a></h3>
+            <p>Swap for: {{ item.swapfor }}</p>
+        </div>
+        {% endfor %}
+    </div>
 </body>
 </html>

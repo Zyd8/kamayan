@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 def item_image_path(instance, filename):
     return f'shop_item_images/{instance.user.id}/{filename}'
 
+
 class SecondHandItem(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)

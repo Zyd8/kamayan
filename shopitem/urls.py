@@ -7,7 +7,6 @@ from django.contrib.auth.models import User
 
 from shopitem import views 
 
-
 urlpatterns = [
     path('', views.sell , name="sell")
 ]

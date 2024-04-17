@@ -11,7 +11,7 @@ def sell(request):
             user = request.user
             name = request.POST.get('name')
             price = request.POST.get('price')
-            images = request.FILES.getlist('image') 
+            images = request.FILES.get('image') 
             description = request.POST.get('description')
             location = request.POST.get('location')
             payment_method = request.POST.get('payment_method')
@@ -32,13 +32,13 @@ def sell(request):
                 images=images 
             )
 
-            return redirect('success') 
+            return redirect('home') 
 
         elif sell_type == 'swap':
             user = request.user
             name = request.POST.get('name')
             swapfor = request.POST.get('swapfor')
-            images = request.FILES.getlist('image')
+            images = request.FILES.get('image') 
             description = request.POST.get('description')
             location = request.POST.get('location')
             pickup_method = request.POST.get('pickup_method')
@@ -58,6 +58,6 @@ def sell(request):
                 images=images 
             )
 
-            return redirect('success') 
+            return redirect('home') 
 
     return render(request, 'sell.html')

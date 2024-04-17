@@ -34,6 +34,8 @@ urlpatterns = [
     path("signin", core_views.signin, name="signin"),
     path("signup", core_views.signup, name="signup"),
     path('signout', core_views.signout, name='signout'),
+    path('secondhanditem/<int:item_id>/', core_views.secondhanditem_room, name='secondhanditem_room'),
+    path('swapitem/<int:item_id>/', core_views.swapitem_room, name='swapitem_room'),
     path('sell/', include('shopitem.urls')),
     path("admin/", admin.site.urls),
     path("__reload__/", include("django_browser_reload.urls")),

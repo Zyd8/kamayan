@@ -13,7 +13,7 @@
     </head>
     <body>
 
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             
             <label>
@@ -26,53 +26,48 @@
             <!-- Common fields for both selling and swapping -->
             <label for="inputName">Name:</label>
             <input type="text" id="inputName" name="name"><br>
+            <label for="inputDescription">Description:</label>
+            <textarea id="inputDescription" name="description"></textarea><br>
+            <label for="inputLocation">Location:</label>
+            <input type="text" id="inputLocation" name="location"><br>
+            <label for="inputPickupMethod">Pickup Method:</label>
+            <input type="text" id="inputPickupMethod" name="pickup_method"><br>
+            <label for="inputCategory">Category:</label>
+            <input type="text" id="inputCategory" name="category"><br>
+            <label for="inputCondition">Condition:</label>
+            <input type="text" id="inputCondition" name="condition"><br>
+
+            <!-- Input field for images -->
+            <label for="inputImages">Images:</label>
+            <input type="file" id="inputImages" name="image" accept="image/*">
+
 
             <!-- Fields specific to selling second-hand items -->
             <div id="second_hand_fields">
                 <label for="inputPrice">Price:</label>
                 <input type="text" id="inputPrice" name="price"><br>
-                <label for="inputDescription">Description:</label>
-                <textarea id="inputDescription" name="description"></textarea><br>
-                <label for="inputLocation">Location:</label>
-                <input type="text" id="inputLocation" name="location"><br>
                 <label for="inputPaymentMethod">Payment Method:</label>
                 <input type="text" id="inputPaymentMethod" name="payment_method"><br>
-                <label for="inputPickupMethod">Pickup Method:</label>
-                <input type="text" id="inputPickupMethod" name="pickup_method"><br>
-                <label for="inputCategory">Category:</label>
-                <input type="text" id="inputCategory" name="category"><br>
-                <label for="inputCondition">Condition:</label>
-                <input type="text" id="inputCondition" name="condition"><br>
-                <!-- Add other fields specific to second-hand items here -->
-                
-                <!-- Input field for images -->
-                <label for="inputImages">Images:</label>
-                <input type="file" id="inputImages" name="image" multiple><br>
+
             </div>
         
             <!-- Fields specific to swapping products -->
             <div id="swap_fields">
                 <label for="inputSwapFor">Swap For:</label>
                 <input type="text" id="inputSwapFor" name="swapfor"><br>
-                <label for="inputDescription">Description:</label>
-                <textarea id="inputDescription" name="description"></textarea><br>
-                <label for="inputLocation">Location:</label>
-                <input type="text" id="inputLocation" name="location"><br>
-                <label for="inputPickupMethod">Pickup Method:</label>
-                <input type="text" id="inputPickupMethod" name="pickup_method"><br>
-                <label for="inputCategory">Category:</label>
-                <input type="text" id="inputCategory" name="category"><br>
-                <label for="inputCondition">Condition:</label>
-                <input type="text" id="inputCondition" name="condition"><br>
-                <!-- Add other fields specific to swapping products here -->
-                
-                <!-- Input field for images -->
-                <label for="inputImages">Images:</label>
-                <input type="file" id="inputImages" name="image" multiple><br>
             </div>
         
             <button type="submit">Submit</button>
         </form>
+
+
+        <hr>
+            <h1> Currently selling: </h1>
+        <hr>
+
+        <hr>
+            <h1> Sold Items: </h1>
+        <hr>
         
     </body>
 </html>

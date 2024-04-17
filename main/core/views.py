@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
+from shopitem.models import SecondHandItem,  SwapItem
 
 def index(request):
     context = {
@@ -10,7 +11,16 @@ def index(request):
     return render(request, "index.html", context)
 
 def home(request):
-    return render(request, 'home.html')
+
+    second_hand_items = SecondHandItem.objects.all()
+    swap_items = SwapItem.objects.all()
+
+    context = {
+        'second_hand_items': second_hand_items,
+        'swap_items': swap_items,
+    }
+
+    return render(request, 'home.html', context)
 
 def signin(request):
     if request.method == 'POST':
@@ -51,3 +61,11 @@ def signup(request):
 def signout(request):
     logout(request)
     return redirect('home')
+
+def secondhanditem_room(request, item_id):
+    item = get_object_or_404(SecondHandItem, pk=item_id)
+    return render(request, 'secondhandroom.html', {'item': item})
+
+def swapitem_room(request, item_id):
+    item = get_object_or_404(SwapItem, pk=item_id)
+    return render(request, 'swaproom.html', {'item': item})
