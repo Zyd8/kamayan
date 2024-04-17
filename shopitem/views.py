@@ -23,10 +23,11 @@ def sell(request):
         swapfor = request.POST.get('swapfor')
 
         sell_type = request.POST.get('sell_type')
-        if sell_type == 'second_hand':
+        if sell_type == 'sell':
             price = request.POST.get('price')
             payment_method = request.POST.get('payment_method')
             isforswap = False
+            swapfor = "None"
         else:  
             price = 0  
             payment_method = "None"

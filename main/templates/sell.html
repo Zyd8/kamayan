@@ -8,99 +8,214 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Sell</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' href="{% static 'signin.css' %}">
+    <link rel='stylesheet' href="{% static 'sell.css' %}">
     <script src="{% static 'signin.js' %}"></script>
 </head>
 <body>
-
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
+    <header>
+        <nav>
     
-    <label>
-        <input type="radio" name="sell_type" value="second_hand" checked> Sell Second-hand Item
-    </label>
-    <label>
-        <input type="radio" name="sell_type" value="swap"> Swap Item
-    </label>
+            <div class="menu-icon">
+                  <i class="fa fa-bars fa-2x"></i>
+            </div>
 
-    <!-- Common fields for both selling and swapping -->
-    <label for="inputName">Name:</label>
-    <input type="text" id="inputName" name="name"><br>
-    <label for="inputDescription">Description:</label>
-    <textarea id="inputDescription" name="description"></textarea><br>
-    <label for="inputLocation">Location:</label>
-    <input type="text" id="inputLocation" name="location"><br>
-    <label for="inputCategory">Category:</label>
-    <input type="text" id="inputCategory" name="category"><br>
-    <label for="inputCondition">Condition:</label>
-    <input type="text" id="inputCondition" name="condition"><br>
+            <div class="logo">
+                  KAMAYAN
+            </div>
 
-    <!-- Common field for both selling and swapping -->
-    <label for="inputContacts">Contacts:</label>
-    <input type="text" id="inputContacts" name="contacts"><br>
+            <div class="search">
+              <input type="text" placeholder="Search..">
+            </div>
 
-    <!-- Input field for images -->
-    <label for="inputImages">Images1: </label>
-    <input type="file" id="inputImages" name="images1" accept="image/*">
-    <label for="inputImages">Images2:</label>
-    <input type="file" id="inputImages" name="images2" accept="image/*">
-    <label for="inputImages">Images3:</label>
-    <input type="file" id="inputImages" name="images3" accept="image/*">
-    <label for="inputImages">Images4:</label>
-    <input type="file" id="inputImages" name="images4" accept="image/*">
+            <div class="menu">
+                  <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact</a></li>
+                  </ul>
+            </div>
+      </nav>
+    </header>
 
+    <form method="post" enctype="multipart/form-data">
 
-    <!-- Fields specific to selling second-hand items -->
-    <div id="second_hand_fields">
-        <label for="inputPrice">Price:</label>
-        <input type="text" id="inputPrice" name="price"><br>
-        <label for="inputPaymentMethod">Payment Method:</label>
-        <input type="text" id="inputPaymentMethod" name="payment_method"><br>
-    </div>
+        <main class="container">
+        {% csrf_token %}
+       <div class="title-page">
+            <h1>What are you excited to sell today ?</h1>
+       </div>
+       <div class="small-page">
+            <h5>Please fill out all the fields</h5>
+       </div>
 
-    <!-- Fields specific to swapping products -->
-    <div id="swap_fields" style="display: none;">  <!-- Hide swap fields by default -->
-        <label for="inputSwapFor">Swap For:</label>
-        <input type="text" id="inputSwapFor" name="swapfor"><br>
-    </div>
+        <div class="input_name inputs">
+                <input type="text" name="name" required placeholder="Product Name...">
+        </div>
+        <div class="input_selltype inputs2">
+            <select name="sell_type" onchange="pili(this.value)">
+                <option value="sell">Sell</option>
+                <option value="swap">Swap</option>
+            </select>
+        </div>
+        
+        <div class="input_location inputs">
+                <input type="text" name="location" required placeholder="Location...">
+        </div>
 
-    <button type="submit">Submit</button>
+        <div class="input_pickuptype inputs2">
+                <select name="payment_method">
+                        <option value="gcash">Gcash</option>
+                        <option value="cash">Cash</option>
+                        <option value="cod">Cash On Delivery</option>
+                        <option value="bank">Bank Transfer</option>
+                </select>
+            </div>
+            <div class="input_contacts inputs">
+                <input type="text" name="contacts" required placeholder="Contacts...">
+            </div>
+            <div class="input_category inputs2">
+                <select name="category">
+                        <option value="electronics">Electronics</option>
+                        <option value="shoes">Shoes</option>
+                        <option value="fashion">Fashion</option>
+                        <option value="toys">Toys</option>
+                        <option value="appliances">Appliances</option>
+                        <option value="accessories">Accessories</option>
+                </select>
+            </div>
+            <div class="input_price inputs">
+                <input id="price_txt" class="tohide" type="number" min="0.1" step="any" name="price" required placeholder="Price...">
+                <input id="swap_txt" class="tohide" type="text" name="swapfor" required placeholder="Swap for...">
+            </div>
+            <div class="inputcondition inputs2">
+                <select name="condition">
+                        <option value="electronics">Secondhand</option>
+                        <option value="electronics">Used</option>
+                        <option value="shoes">Slightly New</option>
+                        <option value="fashion">Like New</option>
+                        <option value="toys">Good Condition</option>
+                        <option value="appliances">Excellent condition</option>
+                        <option value="accessories">Almost New</option>
+                        <option value="accessories">Hardly Used</option>
+                </select>
+            </div>
+            <div class="input_description inputs3">
+                <textarea type="text" name="description" required placeholder="Description..."></textarea>
+            </div>
+            <div class="small-page">
+                <h5>Import your images</h5>
+        </div>
+
+            <a class="btnimg" onclick="openfile(1)">
+                <h1>+</h1>
+                <p id="fileName1"></p>
+            </a>
+            <a class="btnimg" onclick="openfile(2)">
+                <h1>+</h1>
+                <p id="fileName2"></p>
+            </a>
+            <a class="btnimg" onclick="openfile(3)">
+                <h1>+</h1>
+                <p id="fileName3"></p>
+            </a>
+            <a class="btnimg" onclick="openfile(4)">
+                <h1>+</h1>
+                <p id="fileName4"></p>
+            </a>
+            <button type="submit" class="uploadbtn">Sell</button>
+            <input type="file" id="fileInput1" class="hidden" name="images1" onchange="handleFileSelect(1)">
+            <input type="file" id="fileInput2" class="hidden" name="images2" onchange="handleFileSelect(2)">
+            <input type="file" id="fileInput3" class="hidden" name="images3" onchange="handleFileSelect(3)">
+            <input type="file" id="fileInput4" class="hidden" name="images4" onchange="handleFileSelect(4)">
+
+            <div class="textname">
+                <h1> Current Selling: </h1>
+            </div>
+        {% if currently_selling_items %}
+
+            {% for item in currently_selling_items %}
+            <div class="card">
+                <a href="{% url 'itemroom' item.id %}">
+                    <h1>{{ item.name }}</h1>
+                </a>
+            </div>
+            {% endfor %}
+
+        {% else %}
+            <p>No items currently selling.</p>
+        {% endif %}
+
+        <div class="textname">
+            <h1> Sold Items: </h1>
+        </div>
+
+        {% if sold_items %}
+            {% for item in sold_items %}
+            <div class="card">
+                <a href="{% url 'itemroom' item.id %}">
+                    <h1>{{ item.name }}</h1>
+                </a>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>No items sold yet.</p>
+        {% endif %}
+
+    </main>
 </form>
-
-<h1> Currently selling: </h1>
-<hr>
-{% if currently_selling_items %}
-    <ul>
-    {% for item in currently_selling_items %}
-    <a href="{% url 'itemroom' item.id %}"><h1>{{ item.name }}</h1></a>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No items currently selling.</p>
-{% endif %}
-
-<hr>
-<h1> Sold Items: </h1>
-<hr>
-{% if sold_items %}
-    <ul>
-    {% for item in sold_items %}
-    <a href="{% url 'itemroom' item.id %}"><h1>{{ item.name }}</h1></a>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No items sold yet.</p>
-{% endif %}
 
 
 <script>
-    // Show or hide swap fields based on the selected sell type
-    document.querySelectorAll('input[name="sell_type"]').forEach(function(radio) {
-        radio.addEventListener('change', function() {
-            document.getElementById('second_hand_fields').style.display = this.value === 'second_hand' ? 'block' : 'none';
-            document.getElementById('swap_fields').style.display = this.value === 'swap' ? 'block' : 'none';
-        });
+    function openfile(inputNum) {
+        // Trigger click event on the respective file input based on inputNum
+        document.getElementById('fileInput' + inputNum).click();
+    }
+    
+    function handleFileSelect(inputNum) {
+        var fileInput = document.getElementById('fileInput' + inputNum);
+        var fileNamePara = document.getElementById('fileName' + inputNum);
+    
+        // Check if a file is selected
+        if (fileInput.files.length > 0) {
+            var file = fileInput.files[0];
+            // Display the file name
+            fileNamePara.textContent = file.name;
+            // You can now upload the file using AJAX or any other method you prefer
+            console.log('File selected:', file);
+            // Here you can write code to upload the file to your server
+        } else {
+            // If no file is selected, clear the paragraph content
+            fileNamePara.textContent = '';
+        }
+    }
+    </script>
+
+<script type="text/javascript">
+    
+    // Menu-toggle button
+
+    $(document).ready(function() {
+          $(".menu-icon").on("click", function() {
+                $("nav ul").toggleClass("showing");
+          });
     });
+
+</script>
+
+<script>
+    document.getElementById('price_txt').style.display = 'block';
+    function pili(n) {
+        if(n == "sell"){
+            document.getElementById('price_txt').style.display = 'block';
+            document.getElementById('swap_txt').style.display = 'none';
+            document.getElementById('swap_txt').removeAttribute('required');
+        } else if(n == "swap") {
+            document.getElementById('swap_txt').style.display = 'block';
+            document.getElementById('price_txt').style.display = 'none';
+            document.getElementById('price_txt').removeAttribute('required');
+        }
+    }
 </script>
 
 </body>
