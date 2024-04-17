@@ -1,6 +1,5 @@
 from django.contrib import admin
-from .models import SecondHandItem, SwapItem
+from .models import SecondHandItem
 
 admin.site.register(SecondHandItem)
-admin.site.register(SwapItem)
 

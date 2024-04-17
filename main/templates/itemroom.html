@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ item.name }}</title>
+</head>
+<body>
+    <h1>Author: {{ item.user }}</h1>
+    <h1>Product name: {{ item.name }}</h1>
+    <h1>Date published: {{ item.published }}</h1>
+    
+    {% if item.isforswap %}
+        <p id="swap_for_field">Swap for: {{ item.swapfor }}</p>
+    {% else %}
+        <p id="price_field">Price: {{ item.price }}</p>
+        <p id="payment_method_field">Payment Method: {{ item.payment_method }}</p>
+    {% endif %}
+    
+    <p>Description: {{ item.description }}</p>
+    <p>Location: {{ item.location }}</p>
+    <p>Category: {{ item.category }}</p>
+    <p>Condition: {{ item.condition }}</p>
+    <p>Status: {{ item.status }}</p>
+    <p>Contacts: {{ item.contacts }}</p>
+    <img src="{{ item.images.url }}" alt="{{ item.name }} Image">
+</body>
+</html>

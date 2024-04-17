@@ -16,27 +16,21 @@
     {% else %}
     <a href="{% url 'signin' %}">Sign in </a>
     {% endif %}
-
-    <!-- Display SecondHandItems -->
+    
     <div>
-        <h2>Second Hand Items</h2>
         {% for item in second_hand_items %}
         <div style="background-color: cyan;">
-            <h3><a href="{% url 'secondhanditem_room' item.id %}">{{ item.name }}</a></h3>
-            <p>Price: {{ item.price }}</p>
+            <h3><a href="{% url 'itemroom' item.id %}">{{ item.name }}</a></h3>
+            {% if item.isforswap %}
+                <p>Swap</p>
+            {% else %}
+                <p>Price: {{ item.price }}</p>
+            {% endif %}
         </div>
         {% endfor %}
     </div>
+    
+    
 
-    <!-- Display SwapItems -->
-    <div>
-        <h2>Swap Items</h2>
-        {% for item in swap_items %}
-        <div style="background-color: orange;">
-            <h3><a href="{% url 'secondhanditem_room' item.id %}">{{ item.name }}</a></h3>
-            <p>Swap for: {{ item.swapfor }}</p>
-        </div>
-        {% endfor %}
-    </div>
 </body>
 </html>
