@@ -8,35 +8,30 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Sell</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' href="{% static 'sell.css' %}">
+   
+    <link rel='stylesheet' href="{% static 'navbar.css' %}">
     <script src="{% static 'signin.js' %}"></script>
 </head>
 <body>
-    <header>
-        <nav>
-    
-            <div class="menu-icon">
-                  <i class="fa fa-bars fa-2x"></i>
-            </div>
-
+    <nav> 
+        <div class="navbar">
             <div class="logo">
-                  KAMAYAN
+                <img src="{% static 'kamayan-logo.png' %}" alt="kamayan-logo">
+                <a href="{% url 'home' %}">KAMAYAN</a>
+        </div>
+            <div class="search-bar">
+                <input type="text" class="search-input" placeholder="Search products...">
+                <a class="search-button" href="{% url 'search' %}">Search</a>
             </div>
-
-            <div class="search">
-              <input type="text" placeholder="Search..">
-            </div>
-
-            <div class="menu">
-                  <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Contact</a></li>
-                  </ul>
-            </div>
-      </nav>
-    </header>
+            
+        
+            <div class="icon">
+                <span class="icon1"><i class="fa fa-user" aria-hidden="true"></i></span>
+                <a href="{% url 'about' %}"></a>
+            </span>
+            </div> 
+        </div>
+    </nav>
 
     <form method="post" enctype="multipart/form-data">
 

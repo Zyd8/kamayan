@@ -1,53 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ item.name }}</title>
-</head>
-<body>
-    <h1>Author: {{ item.user }}</h1>
-    <h1>Product name: {{ item.name }}</h1>
-    <h1>Date published: {{ item.published }}</h1>
-    
-    {% if item.isforswap %}
-        <p id="swap_for_field">Swap for: {{ item.swapfor }}</p>
-    {% else %}
-        <p id="price_field">Price: {{ item.price }}</p>
-        <p id="payment_method_field">Payment Method: {{ item.payment_method }}</p>
-    {% endif %}
-    
-    <p>Description: {{ item.description }}</p>
-    <p>Location: {{ item.location }}</p>
-    <p>Category: {{ item.category }}</p>
-    <p>Condition: {{ item.condition }}</p>
-    <p>Status: {{ item.status }}</p>
-    <p>Contacts: {{ item.contacts }}</p>
-    <img src="{{ item.images1.url }}" alt="{{ item.name }} Image">
-    <img src="{{ item.images2.url }}" alt="{{ item.name }} Image">
-    <img src="{{ item.images3.url }}" alt="{{ item.name }} Image">
-    <img src="{{ item.images4.url }}" alt="{{ item.name }} Image">
-
-    {% if item.user == request.user %}
-        {% if item.status != "selling" %}
-            <form method="post" action="{% url 'update_status' item.id %}">
-                {% csrf_token %}
-                <input type="hidden" name="status" value="selling">
-                <button type="submit">Mark as Selling</button>
-            </form>
-        {% endif %}
-        
-        {% if item.status != "sold" %}
-            <form method="post" action="{% url 'update_status' item.id %}">
-                {% csrf_token %}
-                <input type="hidden" name="status" value="sold">
-                <button type="submit">Mark as Sold</button>
-            </form>
-        {% endif %}
-    {% endif %}
-</body>
-</html> -->
-
 {% load django_browser_reload %}
 {% load static %}
 
@@ -91,20 +41,37 @@
 
     <main class="container">
 
-      <div class="pics container"> 
+        <div class="pics container"> 
             <div class="mainpic">
-                <img src="{{ item.images1.url }}" alt="MAINPIC"> 
+                {% if item.images1 %}
+                    <img src="{{ item.images1.url }}" alt="MAINPIC"> 
+                {% else %}
+                    <img src="placeholder_image.jpg" alt="Placeholder Image"> 
+                {% endif %}
             </div>
             <div class="pic1">
-                <img src="{{ item.images2.url }}" alt="MAINPIC"> 
+                {% if item.images2 %}
+                    <img src="{{ item.images2.url }}" alt="PIC1"> 
+                {% else %}
+                    <img src="placeholder_image.jpg" alt="Placeholder Image"> 
+                {% endif %}
             </div>
             <div class="pic2">
-                <img src="{{ item.images3.url }}" alt="MAINPIC"> 
+                {% if item.images3 %}
+                    <img src="{{ item.images3.url }}" alt="PIC2"> 
+                {% else %}
+                    <img src="placeholder_image.jpg" alt="Placeholder Image"> 
+                {% endif %}
             </div>
             <div class="pic3">
-                <img src="{{ item.images4.url }}" alt="MAINPIC"> 
+                {% if item.images4 %}
+                    <img src="{{ item.images4.url }}" alt="PIC3"> 
+                {% else %}
+                    <img src="placeholder_image.jpg" alt="Placeholder Image"> 
+                {% endif %}
             </div>
-      </div>
+        </div>
+        
 
       <div class="texts container"> 
             <div class="product-name">
