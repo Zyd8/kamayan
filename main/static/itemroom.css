@@ -1,0 +1,286 @@
+body {
+    font-family: "Helvetica Neue",sans-serif;
+    font-weight: lighter;
+    background: white;
+    margin: 0;
+    padding: 0;
+
+}
+
+header {
+    width: 100%;
+    height: 90px;
+    background-size: cover;
+}
+
+
+.logo {
+    line-height: 60px;
+    position: fixed;
+    float: left;
+    margin: 16px 46px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 30px;
+    letter-spacing: 2px;
+    text-shadow: 0px 0px 10px black;
+}
+
+.search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1; /* Take up remaining space */
+}
+
+.search input[type="text"] {
+    width: 100%; /* Occupy full width */
+    max-width: 300px; /* Limit width if needed */
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+
+nav {
+    display: flex; /* Use flexbox for layout */
+    justify-content: space-between; /* Distribute items evenly */
+    align-items: center; /* Vertically align items */
+    width: 100%;
+    line-height: 60px;
+    background-color: #FFC300;
+}
+nav ul {
+    line-height: 60px;
+    list-style: none;
+    background: rgba(0, 0, 0, 0);
+    overflow: hidden;
+    color: #fff;
+    padding: 0;
+    text-align: right;
+    margin: 0;
+    padding-right: 40px;
+    transition: 1s;
+}
+nav ul li {
+    display: inline-block;
+    padding: 16px 40px;;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+}
+
+.menu-icon {
+    line-height: 60px;
+    width: 100%;
+    background: #FFC300;
+    text-align: right;
+    box-sizing: border-box;
+    padding: 30px 24px;
+    cursor: pointer;
+    color: #fff;
+    display: none;
+}
+
+
+/*CODES START HERE*/
+
+.container {
+    grid-gap: 0px;
+    grid-template-columns: repeat(12, 1fr);
+    display: grid;
+}
+.container1 {
+    grid-gap: 0px;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: minmax(5px, auto);
+    display: grid;
+}
+.container2 {
+    grid-gap: 0px;
+    grid-template-columns: repeat(15, 1fr);
+    grid-auto-rows: minmax(5px, auto);
+    display: grid;
+}
+
+.container3 {
+    grid-gap: 0px;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: minmax(16px, 16px);
+    display: grid;
+}
+
+main {
+    margin: 10px 20px;
+}
+
+
+main .pics {
+    grid-column: span 6;
+}
+
+.mainpic {
+    grid-column: span 12;
+}
+
+.mainpic img {
+    width: 100%;
+    height: 620px;
+}
+
+.pic1, .pic2, .pic3 {
+    grid-column: span 4;
+    margin-top: 10px;
+}
+
+.pic1 img, .pic2 img, .pic3 img{
+    width: 98%;
+    height: 190px;
+}
+
+.pic2 {
+    text-align: center;
+}
+
+.pic3 {
+    text-align: end;
+}
+
+.texts {
+    grid-column: span 6;
+    padding: 20px;
+}
+
+.product-name {
+    grid-column: span 12;
+}
+.product-name h1 {
+    color: #FFC300;
+    text-align: center;
+    font-size: 390%;
+    font-weight: bold;
+    margin: 0px;
+    text-shadow: 2px 2px 5px gray;
+}
+
+.product-price {
+    grid-column: span 12;
+    grid-row: span 5;
+}
+.product-price h1 {
+    color: black;
+    text-align: left;
+    font-size: 70px;
+    margin: 0px;
+    font-weight: 200;
+}
+.product-title {
+    grid-column: span 12;
+    grid-row: span 3;
+}
+.product-title h1 {
+    color:#FFC300;
+    text-align: left;
+    text-shadow: 2px 2px 2px gray;
+    margin: 0px;
+}
+.product-condition {
+    grid-column: span 12;
+}
+.product-condition h1 {
+    color: black;
+    text-align: left;
+    font-weight: 200;
+    margin: 0px;
+}
+
+.product-category {
+    grid-column: span 12;
+}
+.product-category h1 {
+    color: black;
+    text-align: left;
+    font-weight: 200;
+    margin: 0px;
+}
+.product-description {
+    grid-column: span 12;
+}
+.product-description h4 {
+    color: black;
+    text-align: justify;
+    font-weight: 200;
+    margin: 0px;
+}
+.payment-method {
+    grid-column: span 12;
+}
+.payment-method h1{
+    color: black;
+    text-align: left;
+    font-weight: 200;
+}
+.product-location {
+    grid-column: span 12;
+}
+.product-location h1 {
+    color: black;
+    text-align: left;
+    font-weight: 200;
+}
+.product-delivery {
+    grid-column: span 12;
+}
+.product-delivery h1 {
+    color: black;
+    text-align: left;
+    font-weight: 200;
+}
+
+
+
+
+
+
+
+
+
+/*CODES END HERE*/
+
+@media(max-width: 786px) {
+
+    .logo {
+          position: fixed;
+          top: 0;
+          margin-top: 16px;
+    }
+
+    nav ul {
+          max-height: 0px;
+          background: #FFC300;
+    }
+
+    nav.black ul {
+          background: #FFC300;
+    }
+
+    .showing {
+          max-height: 34em;
+    }
+
+    nav ul li {
+          box-sizing: border-box;
+          width: 100%;
+          padding: 24px;
+          text-align: center;
+    }
+
+    .menu-icon {
+          display: block;
+    }
+
+}

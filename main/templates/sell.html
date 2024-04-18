@@ -53,7 +53,8 @@
                 <input type="text" name="name" required placeholder="Product Name...">
         </div>
         <div class="input_selltype inputs2">
-            <select name="sell_type" onchange="pili(this.value)">
+            <select name="sell_type" onchange="pili(this.value)" required>
+                <option value="" disabled selected>Pick a Selling Method...</option>
                 <option value="sell">Sell</option>
                 <option value="swap">Swap</option>
             </select>
@@ -65,10 +66,10 @@
 
         <div class="input_pickuptype inputs2">
                 <select name="payment_method">
-                        <option value="gcash">Gcash</option>
-                        <option value="cash">Cash</option>
-                        <option value="cod">Cash On Delivery</option>
-                        <option value="bank">Bank Transfer</option>
+                        <option value="Gcash">Gcash</option>
+                        <option value="Cash">Cash</option>
+                        <option value="COD">Cash On Delivery</option>
+                        <option value="Bank-Transfer">Bank Transfer</option>
                 </select>
             </div>
             <div class="input_contacts inputs">
@@ -76,12 +77,12 @@
             </div>
             <div class="input_category inputs2">
                 <select name="category">
-                        <option value="electronics">Electronics</option>
-                        <option value="shoes">Shoes</option>
-                        <option value="fashion">Fashion</option>
-                        <option value="toys">Toys</option>
-                        <option value="appliances">Appliances</option>
-                        <option value="accessories">Accessories</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Shoes">Shoes</option>
+                        <option value="Fashion">Fashion</option>
+                        <option value="Toys">Toys</option>
+                        <option value="Appliances">Appliances</option>
+                        <option value="Accessories">Accessories</option>
                 </select>
             </div>
             <div class="input_price inputs">
@@ -90,14 +91,14 @@
             </div>
             <div class="inputcondition inputs2">
                 <select name="condition">
-                        <option value="electronics">Secondhand</option>
-                        <option value="electronics">Used</option>
-                        <option value="shoes">Slightly New</option>
-                        <option value="fashion">Like New</option>
-                        <option value="toys">Good Condition</option>
-                        <option value="appliances">Excellent condition</option>
-                        <option value="accessories">Almost New</option>
-                        <option value="accessories">Hardly Used</option>
+                        <option value="Secondhand">Secondhand</option>
+                        <option value="Used">Used</option>
+                        <option value="Slightly-New">Slightly New</option>
+                        <option value="Like-New">Like New</option>
+                        <option value="Good-Condition">Good Condition</option>
+                        <option value="Excellent-Condition">Excellent Condition</option>
+                        <option value="Almost-New">Almost New</option>
+                        <option value="Hardly-Used">Hardly Used</option>
                 </select>
             </div>
             <div class="input_description inputs3">

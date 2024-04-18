@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -45,5 +45,135 @@
             </form>
         {% endif %}
     {% endif %}
+</body>
+</html> -->
+
+{% load django_browser_reload %}
+{% load static %}
+
+
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>PRODUCTS</title>
+      <link rel="stylesheet" href="{% static 'itemroom.css' %}">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+      <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+</head>
+<body>
+    <header>
+
+        <nav>
+
+              <div class="menu-icon">
+                    <i class="fa fa-bars fa-2x"></i>
+              </div>
+
+              <div class="logo">
+                    KAMAYAN
+              </div>
+
+              <div class="search">
+                <input type="text" placeholder="Search..">
+              </div>
+
+              <div class="menu">
+                    <ul>
+                          <li><a href="#">Home</a></li>
+                          <li><a href="#">About</a></li>
+                          <li><a href="#">Blog</a></li>
+                          <li><a href="#">Contact</a></li>
+                    </ul>
+              </div>
+        </nav>
+
+    <main class="container">
+
+      <div class="pics container"> 
+            <div class="mainpic">
+                <img src="{{ item.images1.url }}" alt="MAINPIC"> 
+            </div>
+            <div class="pic1">
+                <img src="{{ item.images2.url }}" alt="MAINPIC"> 
+            </div>
+            <div class="pic2">
+                <img src="{{ item.images3.url }}" alt="MAINPIC"> 
+            </div>
+            <div class="pic3">
+                <img src="{{ item.images4.url }}" alt="MAINPIC"> 
+            </div>
+      </div>
+
+      <div class="texts container"> 
+            <div class="product-name">
+                  <h1>{{ item.name }}</h1>
+            </div>
+    
+            {% if not item.isforswap %}
+            <div class="product-price">
+                <h1>Price: ₱{{ item.price }}</h1>
+            </div>
+            <div class="product-title">
+                <h1>Payment Method</h1>
+            </div>
+            <div class="payment-method">
+                <h1>{{ item.payment_method }}</h1>
+            </div>
+            {% else %}
+            <div class="product-price">
+                <h1>Swap for: {{ item.swapfor }}</h1>
+            </div>
+            {% endif %}
+            
+            <div class="product-title">
+                <h1>Condition</h1>
+            </div>
+            <div class="product-condition">
+                <h1>{{ item.condition }}</h1>
+            </div>
+            <div class="product-title">
+                <h1>Category</h1>
+            </div>
+            <div class="product-category">
+                <h1>{{ item.category }}</h1>
+            </div>
+            <div class="product-title">
+                <h1>Location</h1>
+            </div>
+            <div class="product-location">
+                <h1>{{item.location}}</h1>
+            </div>
+            <div class="product-title">
+                <h1>Contacts</h1>
+            </div>
+            <div class="product-delivery">
+                <h1>{{item.contacts}}</h1>
+            </div>
+            <div class="product-title">
+                <h1>Description</h1>
+            </div>
+            <div class="product-description">
+                <h4>{{item.description}}</h4>
+            </div>
+      </div>
+
+    </main>
+
+        
+
+      <script type="text/javascript">
+
+      // Menu-toggle button
+
+      $(document).ready(function() {
+            $(".menu-icon").on("click", function() {
+                  $("nav ul").toggleClass("showing");
+            });
+      });
+
+      </script>
+
 </body>
 </html>
