@@ -159,6 +159,26 @@
             </div>
       </div>
 
+      {% if item.user == request.user %}
+        {% if item.status != "selling" %}
+            <form method="post" action="{% url 'update_status' item.id %}">
+                {% csrf_token %}
+                <input type="hidden" name="status" value="selling">
+                <button type="submit">Mark as Selling</button>
+            </form>
+        {% endif %}
+        
+        {% if item.status != "sold" %}
+            <form method="post" action="{% url 'update_status' item.id %}">
+                {% csrf_token %}
+                <input type="hidden" name="status" value="sold">
+                <div class="test">
+                    <button class="soldbtn" type="submit">Mark as Sold</button>
+                </div>
+            </form>
+        {% endif %}
+    {% endif %}
+
     </main>
 
         
