@@ -11,8 +11,9 @@ Google fonts (Poppins)
 - Install repo as zip
 - Extract zip
 - pip install all packages listed in requirements.txt
-- navigate to the location of manage.py in the directory
-- type python manage.py runserver
-
+- navigate/cd to the location of manage.py in the directory
+- type python manage.py migrate in cmd
+- type python manage.py runserver in cmd
+- open the instructed local port in browser
 
 
