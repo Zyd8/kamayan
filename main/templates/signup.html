@@ -3,36 +3,68 @@
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset='utf-8'>
-        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-        <title>Sign up</title>
-        <meta name='viewport' content='width=device-width, initial-scale=1'>
-        <link rel='stylesheet' href="{% static 'signup.css' %}">
-        <script src="{% static 'signup.js' %}"></script>
-    </head>
-    <body>
 
-        <form method="post"> <!-- POST means sending data to the server -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Sign up</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' href="{% static 'signup.css' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/NCC-logo.png">
+    <script src="https://kit.fontawesome.com/d84bfa7905.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <form method="post" id="signupForm"> <!-- POST means sending data to the server -->
 
-            {% csrf_token %} <!-- Protection against unauthorized submisstions -->
+        {% csrf_token %} <!-- Protection against unauthorized submisstions -->
+        
 
-            <label for="inputUsername">Username: </label>
-            <input type="text" id="inputUsername" name="inputUsername">
 
-            <label for="inputPassword">Password:</label>
-            <input type="password" id="inputPassword" name="inputPassword">
 
-            <label for="confirmInputPassword">Password:</label>
-            <input type="password" id="confirmInputPassword" name="confirmInputPassword">
 
-            <button type="submit" id="submit">Sign Up!</button>
+        <div class="container">
+            <div class="welcometxt">
+                <h1>Welcome to KAMAYAN</h1>
+                <p>Sign Up</p>
+            </div>
+            <div class="space">
+                <img src="{% static 'welcomeimg.png' %}">
+            </div>
+            <div class="type">
+                <h4>Email or Username</h4>
+            </div>
+            <div class="inputdiv">
+                <input id="inputUsername" class="input" type="text" placeholder="Enter Email or Username"
+                    name="inputUsername" style="width: 100%;" required><br>
+            </div>
+            <div class="type2">
+                <h4>Password</h4>
+            </div>
+            <div class="inputdiv">
+                <input id="inputPassword" class="input" type="password" placeholder="Enter Email or Username"
+                    name="inputPassword" style="width: 100%" required><br>
+            </div>
+            <div class="type2">
+                <h4>Confirm Password</h4>
+            </div>
+            <div class="inputdiv">
+                <input id="confirmInputPassword" class="input" type="password" placeholder="Enter Email or Username"
+                    name="confirmInputPassword" style="width: 100%" required><br>
+            </div>
+            
+            <div class="btndiv">
+                <button type="submit" id="submit" class="buy-button">Login</button>
+            </div>
+        </div>
 
-        </form>
 
-        {% if error_message %}
-            alert("{{error_message}}")
-        {% endif %}
+    </form>
 
-    </body>
+    {% if error_message %}
+    alert("{{error_message}}")
+    {% endif %}
+
+</body>
+<script src="{% static 'signup.js' %}"></script>
+
 </html>

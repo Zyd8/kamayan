@@ -3,33 +3,55 @@
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset='utf-8'>
-        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-        <title>Employee Sign in</title>
-        <meta name='viewport' content='width=device-width, initial-scale=1'>
-        <link rel='stylesheet' href="{% static 'signin.css' %}">
-        <script src="{% static 'signin.js' %}"></script>
-    </head>
-    <body>
 
-        <form method="post"> <!-- POST means sending data to the server -->
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Employee Sign in</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' href="{% static 'signin.css' %}">
+    <script src="{% static 'signin.js' %}"></script>
+</head>
 
-            {% csrf_token %} <!-- Protection against unauthorized submisstions -->
+<body>
+    <form method="post"> <!-- POST means sending data to the server -->
 
-            <label for="inputUsername">Username: </label>
-            <input type="text" id="inputUsername" name="inputUsername">
+        {% csrf_token %} <!-- Protection against unauthorized submisstions -->
+        <div class="container">
+            <div class="welcometxt">
+                <h1>Welcome Back</h1>
+                <p>Sign in</p>
+            </div>
+            <div class="space">
+                <img src="{% static 'welcomeimg.png' %}">
+            </div>
+            <div class="type">
+                <h4>Email or Username</h4>
+            </div>
+            <div class="inputdiv">
+                <input id="inputUsername" class="input" type="text" placeholder="Enter Email or Username"
+                    name="inputUsername" style="width: 100%;" required><br>
+            </div>
+            <div class="type2">
+                <h4>Password</h4>
+            </div>
+            <div class="inputdiv">
+                <input id="inputPassword" class="input" type="password" placeholder="Enter Email or Username"
+                    name="inputPassword" style="width: 100%" required><br>
+            </div>
+            
+            <div class="btndiv">
+                <button class="buy-button" type="submit" id="submit">Login</button>
+            </div>
+        </div>
 
-            <label for="inputPassword">Password:</label>
-            <input type="password" id="inputPassword" name="inputPassword">
 
-            <button type="submit" id="submit">Sign In!</button>
+    </form>
 
-        </form>
+    {% if error_message %}
+    alert("{{error_message}}")
+    {% endif %}
 
-        {% if error_message %}
-            alert("{{error_message}}")
-        {% endif %}
+</body>
 
-    </body>
 </html>

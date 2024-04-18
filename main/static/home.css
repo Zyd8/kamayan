@@ -257,17 +257,18 @@ main {
     grid-column: span 2;
     grid-row: 1 span 1;
     padding: 15px;
+    text-align: center;
 }
 
-.section2 img {
-    width: 100%;
+.section2 .pic1 img, .section2 .pic2 img, .section2 .pic3 img, .section2 .pic4 img, .section2 .pic5 img, .section2 .pic6 img{
+    width: 70%;
     height: 170px;
 }
 
 .section2 h3{
     grid-column: span 2;
     text-align: center;
-    color: #fff;
+    color: #FFF;
     margin: 0px;
 }
 
