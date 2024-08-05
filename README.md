@@ -1,3 +1,8 @@
+# Kamayan
+
+https://github.com/user-attachments/assets/8a4a3d6a-10c1-4ae0-9be7-b918f273c62a
+
+A web app marketplace catered to trading or selling preloved items.
 
 # Setup
 - Install repo as zip
